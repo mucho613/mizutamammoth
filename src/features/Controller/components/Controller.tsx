@@ -8,11 +8,10 @@ type Props = {
 }
 
 export const Controller: Component<Props> = (props: Props) => {
-  const { circles, setCircles } = props;
   const [x, setX] = createSignal(0);
 
   const handleClick = () => {
-    setCircles((circles) => {
+    props.setCircles((circles) => {
       setX(x => x + 100);
       return [
         ...circles,
@@ -32,7 +31,7 @@ export const Controller: Component<Props> = (props: Props) => {
       <h2 class="text-xl mb-2">Controller</h2>
       <img class="w-full" src={sample} />
       <ul>
-        {circles.map(
+        {props.circles.map(
           (circle) => <li>cx: {circle.centerPosition.x} cy: {circle.centerPosition.y} radius: {circle.radius}</li>
         )}
       </ul>

@@ -13,8 +13,6 @@ const ClipedImage = styled('img')`
 `;
 
 export const Preview: Component<Props> = (props: Props) => {
-  const { circles, setCircles } = props;
-
   return (
     <div class="rounded-lg border-2 p-4">
       <h2 class="text-xl mb-2">Preview</h2>
@@ -23,7 +21,7 @@ export const Preview: Component<Props> = (props: Props) => {
         <svg class="absolute top-0 w-full h-full">
           <clipPath id="clipMask">
             {
-              circles.map(circle => (
+              props.circles.map(circle => (
                 <circle cx={circle.centerPosition.x} cy={circle.centerPosition.y} r={circle.radius} />
               ))
             }
